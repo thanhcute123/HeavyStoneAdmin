@@ -1,0 +1,37 @@
+.post {
+    width: 97%;
+    border-radius: 20px;
+    margin-left: 15px;
+    height: 120px;
+    border: 1px solid grey;
+    margin-bottom: 30px;
+}
+.button-detail {
+    background-color: #1c606a;
+    color: white;
+    border: none;
+    padding: 5px;
+    margin-left: 5px;
+}
+.time {
+    font-size: 12px;
+}
+.username {
+    font-weight: 500;
+}
+.doc-tag {
+    margin-top: -28px;
+}
+
+.doc-tag-item {
+    display: flex;
+    list-style-type: none;
+    margin-right: 10px;
+    border-radius: 10px;
+    height: 24px;
+    background-color: #2ba2a2;
+    color: white;
+    font-size: 10px;
+    align-items: center;
+    padding: 5px;
+}

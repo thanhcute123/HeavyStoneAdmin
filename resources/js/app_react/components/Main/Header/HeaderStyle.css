@@ -1,0 +1,12 @@
+.header-fixed {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+}
+.btn-search {
+    background-color: #1A6A70 !important;
+    color: white;
+}
+.input-search:focus {
+    outline: none;
+}

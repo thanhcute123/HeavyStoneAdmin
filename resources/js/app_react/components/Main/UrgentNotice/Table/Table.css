@@ -1,0 +1,21 @@
+.card-table {
+    width: 97%;
+    margin-left: 15px;
+}
+
+.table-search {
+    border: 1px solid lightgrey;
+    padding: 5px;
+    border-radius: 50px;
+    float: right;
+    margin-bottom: 15px;
+}
+
+.table-search input {
+    border: none;
+    text-indent: 10px;
+}
+
+.table-search input:focus {
+    outline: none;
+}

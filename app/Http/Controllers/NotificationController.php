@@ -14,7 +14,8 @@ class NotificationController extends Controller
      */
     public function getAll()
     {
-        $notification = Notification::simplePaginate(5);
+//        $notification = Notification::simplePaginate(5);
+        $notification = Notification::get();
         return response()->json($notification);
     }
 

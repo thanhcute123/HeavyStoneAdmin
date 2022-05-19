@@ -14,7 +14,8 @@ class ClubController extends Controller
      */
     public function getAll()
     {
-        $club = Club::simplePaginate(5);
+//        $club = Club::simplePaginate(5);
+        $club = Club::get();
         return response()->json($club);
     }
 

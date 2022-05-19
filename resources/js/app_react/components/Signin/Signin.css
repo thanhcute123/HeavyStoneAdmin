@@ -1,0 +1,1190 @@
+.signin {
+    height: 100vh;
+}
+.signin-right {
+    border-left: 1px solid lightgrey;
+}
+
+.signin-right h2 {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.signin-text {
+    height: 100px;
+}
+.signin-img {
+    width: 250px;
+    /*margin-top: -80px;*/
+}
+.signin-form {
+    width: 90%;
+}
+.signin-button {
+    background-color: #055e73;
+    color: white;
+    border: none;
+    padding: 10px;
+}
+
+#calltrap-btn {
+    background-color: #2074a1;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    display: block;
+    height: 64px;
+    line-height: 100px;
+    opacity: 0.7;
+    position: fixed;
+    right: 35px;
+    top: 155px;
+    text-align: center;
+    width: 64px;
+    z-index: 9999;
+    -webkit-animation: calltrap_opacity 3s infinite linear;
+    -moz-animation: calltrap_opacity 3s infinite linear;
+    -o-animation: calltrap_opacity 3s infinite linear;
+    animation: calltrap_opacity 3s infinite linear
+}
+
+#calltrap-btn.calltrap_offline {
+    background-color: #f3f3f3;
+}
+
+#calltrap-ico {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    margin: auto;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    border: 0;
+    -webkit-border-radius: 50% !important;
+    border-radius: 50% !important;
+    -o-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-animation: uptocallmini 1.5s 0s ease-out infinite;
+    -moz-animation: uptocallmini 1.5s 0s ease-out infinite;
+    -o-animation: uptocallmini 1.5s 0s ease-out infinite;
+    animation: uptocallmini 1.5s 0s ease-out infinite
+}
+
+#calltrap-ico:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    background-image: url("../../img/c9b1f3f60a6dc4339d7c-removebg-preview.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-animation: calltrap_spin 3s infinite linear;
+    -moz-animation: calltrap_spin 3s infinite linear;
+    -o-animation: calltrap_spin 3s infinite linear;
+    animation: calltrap_spin 3s infinite linear
+}
+
+.calltrap_offline #calltrap-ico {
+    -webkit-animation: uptocallmini_offline 1.5s 0s ease-out infinite;
+    -moz-animation: uptocallmini_offline 1.5s 0s ease-out infinite;
+    -o-animation: uptocallmini_offline 1.5s 0s ease-out infinite;
+    animation: uptocallmini_offline 1.5s 0s ease-out infinite
+}
+
+#calltrap-overlay {
+    background-color: #191919;
+    background-color: rgba(25, 25, 25, 0.9);
+    position: fixed;
+    z-index: 9998;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    display: none
+}
+
+#calltrap-overlay .b-calltrap-overlay {
+    display: table;
+    width: 100%;
+    height: 100%
+}
+
+#calltrap-overlay .b-calltrap-overlay__header, #calltrap-overlay .b-calltrap-overlay__body, #calltrap-overlay .b-calltrap-overlay__footer {
+    display: table-row;
+    padding: 0;
+    margin: 0
+}
+
+#calltrap-overlay .b-calltrap-overlay__header-block, #calltrap-overlay .b-calltrap-overlay__body-block, #calltrap-overlay .b-calltrap-overlay__footer-block {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center
+}
+
+#calltrap-overlay .b-calltrap-overlay__body-block {
+    padding: 0 7px
+}
+
+#calltrap-overlay .b-calltrap-overlay__header, #calltrap-overlay .b-calltrap-overlay__footer {
+    height: 1px
+}
+
+#calltrap-overlay .b-calltrap__container {
+    background-color: white;
+    border: 5px solid #2074a1;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    margin: 0;
+    padding: 0;
+    max-width: 500px;
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.3;
+    position: relative;
+    font-family: Tahoma, Arial, self-serif !important
+}
+
+@media screen and (min-width: 1px) and (max-width: 500px) {
+    #calltrap-overlay .b-calltrap__container {
+        width: 290px
+    }
+}
+
+#calltrap-overlay .b-calltrap__close {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    opacity: 0.5;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease
+}
+
+#calltrap-overlay .b-calltrap__close:hover {
+    opacity: 1
+}
+
+#calltrap-success, #calltrap-form {
+    display: block
+}
+
+#calltrap-success .b-calltrap_form__fields, #calltrap-form .b-calltrap_form__fields {
+    margin: 20px 25px 35px
+}
+
+#calltrap-success .b-calltrap_form__title, #calltrap-form .b-calltrap_form__title {
+    font-size: 20px;
+    margin: 0 0 17px;
+    text-align: left
+}
+
+@media screen and (min-width: 1px) and (max-width: 500px) {
+    #calltrap-success .b-calltrap_form__title, #calltrap-form .b-calltrap_form__title {
+        padding-right: 20px
+    }
+}
+
+#calltrap-success .b-calltrap_form__text, #calltrap-form .b-calltrap_form__text {
+    text-align: left
+}
+
+#calltrap-success .b-calltrap_form__text p, #calltrap-form .b-calltrap_form__text p {
+    margin: 0 0 0.55em
+}
+
+#calltrap-success .b-calltrap_form__input, #calltrap-form .b-calltrap_form__input {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 0 15px 0;
+    height: 44px;
+    line-height: 40px;
+    background-color: white;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    display: block;
+    width: 100%;
+    outline: none;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease
+}
+
+@media screen and (min-width: 1px) and (max-width: 500px) {
+    #calltrap-success .b-calltrap_form__input, #calltrap-form .b-calltrap_form__input {
+        margin-bottom: 13px
+    }
+}
+
+#calltrap-success .b-calltrap_form__input.error, #calltrap-form .b-calltrap_form__input.error {
+    background-color: #ffc0c0;
+    color: red;
+    border-color: red
+}
+
+#calltrap-success .b-calltrap_form__input:disabled, #calltrap-form .b-calltrap_form__input:disabled {
+    background-color: #eee;
+    border-color: #bdbdbd;
+    cursor: default
+}
+
+#calltrap-success .b-calltrap_form__input:focus, #calltrap-form .b-calltrap_form__input:focus {
+    border: 2px solid #2074a1
+}
+
+#calltrap-success .b-calltrap_form__submit, #calltrap-form .b-calltrap_form__submit {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /*background-color: #2074a1;*/
+    /*border: 2px solid #2074a1;*/
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: medium none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    height: 44px;
+    line-height: 40px;
+    outline: medium none;
+    display: inline-block;
+    width: 180px;
+    text-align: center;
+    outline: none;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease
+}
+
+@media screen and (min-width: 1px) and (max-width: 500px) {
+    #calltrap-success .b-calltrap_form__submit, #calltrap-form .b-calltrap_form__submit {
+        width: 100%
+    }
+}
+
+#calltrap-success .b-calltrap_form__submit:hover, #calltrap-form .b-calltrap_form__submit:hover {
+    /*background-color: #1c658c*/
+}
+
+#calltrap-success .b-calltrap_form__submit:disabled, #calltrap-form .b-calltrap_form__submit:disabled {
+    background-color: #bdbdbd !important;
+    cursor: default
+}
+
+#calltrap-success .b-calltrap_form__controls, #calltrap-form .b-calltrap_form__controls {
+    margin: 20px 0 0;
+    padding: 0;
+    padding: 0 200px 0 0
+}
+
+@media screen and (min-width: 1px) and (max-width: 500px) {
+    #calltrap-success .b-calltrap_form__controls, #calltrap-form .b-calltrap_form__controls {
+        padding: 0
+    }
+}
+
+#calltrap-success .b-calltrap_form__controls-item, #calltrap-form .b-calltrap_form__controls-item {
+    position: relative;
+    float: right
+}
+
+@media screen and (min-width: 1px) and (max-width: 500px) {
+    #calltrap-success .b-calltrap_form__controls-item, #calltrap-form .b-calltrap_form__controls-item {
+        float: none
+    }
+}
+
+#calltrap-success .b-calltrap_form__controls-left, #calltrap-form .b-calltrap_form__controls-left {
+    margin-left: -100%;
+    width: 100%
+}
+
+@media screen and (min-width: 1px) and (max-width: 500px) {
+    #calltrap-success .b-calltrap_form__controls-left, #calltrap-form .b-calltrap_form__controls-left {
+        margin-left: 0
+    }
+}
+
+#calltrap-success .b-calltrap_form__controls-right, #calltrap-form .b-calltrap_form__controls-right {
+    margin-right: -200px;
+    overflow: visible;
+    width: 200px;
+    text-align: right
+}
+
+@media screen and (min-width: 1px) and (max-width: 500px) {
+    #calltrap-success .b-calltrap_form__controls-right, #calltrap-form .b-calltrap_form__controls-right {
+        margin-right: 0;
+        width: auto;
+        text-align: left
+    }
+}
+
+#calltrap-success .b-calltrap_form__controls-clear, #calltrap-form .b-calltrap_form__controls-clear {
+    clear: both
+}
+
+#calltrap-success {
+    display: none
+}
+
+#calltrap-overlay.calltrap_offline .b-calltrap_form__submit {
+    /*background-color: #1CB2ED*/
+}
+
+#calltrap-overlay.calltrap_offline .b-calltrap_form__submit:hover {
+    background-color: #2e8c1c
+}
+
+#calltrap-overlay.calltrap_offline .b-calltrap_form__input:focus {
+    /*border-color: #1CB2ED*/
+}
+
+#calltrap-overlay.calltrap_offline .b-calltrap__container {
+    /*border-color: #1CB2ED*/
+}
+
+@-webkit-keyframes calltrap_opacity {
+    0% {
+        opacity: 1
+    }
+    57% {
+        opacity: 0.75
+    }
+    75% {
+        opacity: 0.95
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@-moz-keyframes calltrap_opacity {
+    0% {
+        opacity: 1
+    }
+    57% {
+        opacity: 0.75
+    }
+    75% {
+        opacity: 0.95
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@-o-keyframes calltrap_opacity {
+    0% {
+        opacity: 1
+    }
+    57% {
+        opacity: 0.75
+    }
+    75% {
+        opacity: 0.95
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@keyframes calltrap_opacity {
+    0% {
+        opacity: 1
+    }
+    57% {
+        opacity: 0.75
+    }
+    75% {
+        opacity: 0.95
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes calltrap_spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    30% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    33% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    36% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+    39% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    42% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+    45% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    48% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
+        opacity: 1
+    }
+    51% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    54% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+    57% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+}
+
+@-moz-keyframes calltrap_spin {
+    0% {
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    30% {
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    33% {
+        -moz-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    36% {
+        -moz-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+    39% {
+        -moz-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    42% {
+        -moz-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+    45% {
+        -moz-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    48% {
+        -moz-transform: rotate(10deg);
+        transform: rotate(10deg);
+        opacity: 1
+    }
+    51% {
+        -moz-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    54% {
+        -moz-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+    57% {
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+}
+
+@-o-keyframes calltrap_spin {
+    0% {
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    30% {
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    33% {
+        -o-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    36% {
+        -o-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+    39% {
+        -o-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    42% {
+        -o-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+    45% {
+        -o-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    48% {
+        -o-transform: rotate(10deg);
+        transform: rotate(10deg);
+        opacity: 1
+    }
+    51% {
+        -o-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    54% {
+        -o-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+    57% {
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+}
+
+@keyframes calltrap_spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    30% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    33% {
+        -webkit-transform: rotate(-10deg);
+        -moz-transform: rotate(-10deg);
+        -o-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    36% {
+        -webkit-transform: rotate(10deg);
+        -moz-transform: rotate(10deg);
+        -o-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+    39% {
+        -webkit-transform: rotate(-10deg);
+        -moz-transform: rotate(-10deg);
+        -o-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    42% {
+        -webkit-transform: rotate(10deg);
+        -moz-transform: rotate(10deg);
+        -o-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+    45% {
+        -webkit-transform: rotate(-10deg);
+        -moz-transform: rotate(-10deg);
+        -o-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    48% {
+        -webkit-transform: rotate(10deg);
+        -moz-transform: rotate(10deg);
+        -o-transform: rotate(10deg);
+        transform: rotate(10deg);
+        opacity: 1
+    }
+    51% {
+        -webkit-transform: rotate(-10deg);
+        -moz-transform: rotate(-10deg);
+        -o-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    54% {
+        -webkit-transform: rotate(10deg);
+        -moz-transform: rotate(10deg);
+        -o-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+    57% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+}
+
+@-webkit-keyframes uptocallmini {
+    0% {
+        -webkit-box-shadow: 0 0 8px 6px rgba(32, 116, 161, 0), 0 0 0px 0px transparent, 0 0 0px 0px rgba(32, 116, 161, 0);
+        box-shadow: 0 0 8px 6px rgba(32, 116, 161, 0), 0 0 0px 0px transparent, 0 0 0px 0px rgba(32, 116, 161, 0)
+    }
+    10% {
+        -webkit-box-shadow: 0 0 8px 6px #055e73, 0 0 12px 10px transparent, 0 0 12px 14px #055e73;
+        box-shadow: 0 0 8px 6px #055e73, 0 0 12px 10px transparent, 0 0 12px 14px #055e73;
+    }
+    100% {
+        -webkit-box-shadow: 0 0 8px 6px rgba(32, 116, 161, 0), 0 0 0px 40px transparent, 0 0 0px 40px rgba(32, 116, 161, 0);
+        box-shadow: 0 0 8px 6px rgba(32, 116, 161, 0), 0 0 0px 40px transparent, 0 0 0px 40px rgba(32, 116, 161, 0)
+    }
+}
+
+@-moz-keyframes uptocallmini {
+    0% {
+        box-shadow: 0 0 8px 6px rgba(32, 116, 161, 0), 0 0 0px 0px transparent, 0 0 0px 0px rgba(32, 116, 161, 0)
+    }
+    10% {
+        /*box-shadow: 0 0 8px 6px #2074a1, 0 0 12px 10px transparent, 0 0 12px 14px #2074a1*/
+    }
+    100% {
+        box-shadow: 0 0 8px 6px rgba(32, 116, 161, 0), 0 0 0px 40px transparent, 0 0 0px 40px rgba(32, 116, 161, 0)
+    }
+}
+
+@-o-keyframes uptocallmini {
+    0% {
+        box-shadow: 0 0 8px 6px rgba(32, 116, 161, 0), 0 0 0px 0px transparent, 0 0 0px 0px rgba(32, 116, 161, 0)
+    }
+    10% {
+        /*box-shadow: 0 0 8px 6px #2074a1, 0 0 12px 10px transparent, 0 0 12px 14px #2074a1*/
+    }
+    100% {
+        box-shadow: 0 0 8px 6px rgba(32, 116, 161, 0), 0 0 0px 40px transparent, 0 0 0px 40px rgba(32, 116, 161, 0)
+    }
+}
+
+@keyframes uptocallmini {
+    0% {
+        -webkit-box-shadow: 0 0 8px 6px rgba(32, 116, 161, 0), 0 0 0px 0px transparent, 0 0 0px 0px rgba(32, 116, 161, 0);
+        box-shadow: 0 0 8px 6px rgba(32, 116, 161, 0), 0 0 0px 0px transparent, 0 0 0px 0px rgba(32, 116, 161, 0)
+    }
+    10% {
+        -webkit-box-shadow: 0 0 8px 6px #055e73, 0 0 12px 10px transparent, 0 0 12px 14px #055e73;
+        box-shadow: 0 0 8px 6px #055e73, 0 0 12px 10px transparent, 0 0 12px 14px #055e73;
+    }
+    100% {
+        -webkit-box-shadow: 0 0 8px 6px rgba(32, 116, 161, 0), 0 0 0px 40px transparent, 0 0 0px 40px rgba(32, 116, 161, 0);
+        box-shadow: 0 0 8px 6px rgba(32, 116, 161, 0), 0 0 0px 40px transparent, 0 0 0px 40px rgba(32, 116, 161, 0)
+    }
+}
+
+@-webkit-keyframes uptocallmini_offline {
+    0% {
+        -webkit-box-shadow: 0 0 8px 6px rgba(53, 161, 32, 0), 0 0 0px 0px transparent, 0 0 0px 0px rgba(53, 161, 32, 0);
+        box-shadow: 0 0 8px 6px rgba(53, 161, 32, 0), 0 0 0px 0px transparent, 0 0 0px 0px rgba(53, 161, 32, 0)
+    }
+    10% {
+        -webkit-box-shadow: 0 0 8px 6px #35A120, 0 0 12px 10px transparent, 0 0 12px 14px #35A120;
+        box-shadow: 0 0 8px 6px #35A120, 0 0 12px 10px transparent, 0 0 12px 14px #35A120
+    }
+    100% {
+        -webkit-box-shadow: 0 0 8px 6px rgba(53, 161, 32, 0), 0 0 0px 40px transparent, 0 0 0px 40px rgba(53, 161, 32, 0);
+        box-shadow: 0 0 8px 6px rgba(53, 161, 32, 0), 0 0 0px 40px transparent, 0 0 0px 40px rgba(53, 161, 32, 0)
+    }
+}
+
+@-moz-keyframes uptocallmini_offline {
+    0% {
+        box-shadow: 0 0 8px 6px rgba(53, 161, 32, 0), 0 0 0px 0px transparent, 0 0 0px 0px rgba(53, 161, 32, 0)
+    }
+    10% {
+        box-shadow: 0 0 8px 6px #35A120, 0 0 12px 10px transparent, 0 0 12px 14px #35A120
+    }
+    100% {
+        box-shadow: 0 0 8px 6px rgba(53, 161, 32, 0), 0 0 0px 40px transparent, 0 0 0px 40px rgba(53, 161, 32, 0)
+    }
+}
+
+@-o-keyframes uptocallmini_offline {
+    0% {
+        box-shadow: 0 0 8px 6px rgba(53, 161, 32, 0), 0 0 0px 0px transparent, 0 0 0px 0px rgba(53, 161, 32, 0)
+    }
+    10% {
+        box-shadow: 0 0 8px 6px #35A120, 0 0 12px 10px transparent, 0 0 12px 14px #35A120
+    }
+    100% {
+        box-shadow: 0 0 8px 6px rgba(53, 161, 32, 0), 0 0 0px 40px transparent, 0 0 0px 40px rgba(53, 161, 32, 0)
+    }
+}
+
+@keyframes uptocallmini_offline {
+    0% {
+        -webkit-box-shadow: 0 0 8px 6px rgba(53, 161, 32, 0), 0 0 0px 0px transparent, 0 0 0px 0px rgba(53, 161, 32, 0);
+        box-shadow: 0 0 8px 6px rgba(53, 161, 32, 0), 0 0 0px 0px transparent, 0 0 0px 0px rgba(53, 161, 32, 0)
+    }
+    10% {
+        -webkit-box-shadow: 0 0 8px 6px #055e73, 0 0 12px 10px transparent, 0 0 12px 14px #055e73;
+        box-shadow: 0 0 8px 6px #055e73, 0 0 12px 10px transparent, 0 0 12px 14px #055e73;
+    }
+    100% {
+        -webkit-box-shadow: 0 0 8px 6px rgba(53, 161, 32, 0), 0 0 0px 40px transparent, 0 0 0px 40px rgba(53, 161, 32, 0);
+        box-shadow: 0 0 8px 6px rgba(53, 161, 32, 0), 0 0 0px 40px transparent, 0 0 0px 40px rgba(53, 161, 32, 0)
+    }
+}
+
+/*body{*/
+/*    margin-top:20px;*/
+/*    background:#eee;*/
+/*}*/
+.box {
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.box.box-primary {
+    border-top-color: #055e73;
+}
+.box.box-info {
+    border-top-color: #00c0ef;
+}
+.box.box-danger {
+    border-top-color: #dd4b39;
+}
+.box.box-warning {
+    border-top-color: #f39c12;
+}
+.box.box-success {
+    border-top-color: #00a65a;
+}
+.box.box-default {
+    border-top-color: #d2d6de;
+}
+.box.collapsed-box .box-body, .box.collapsed-box .box-footer {
+    display: none;
+}
+.box .nav-stacked>li {
+    border-bottom: 1px solid #f4f4f4;
+    margin: 0;
+}
+.box .nav-stacked>li:last-of-type {
+    border-bottom: none;
+}
+.box.height-control .box-body {
+    max-height: 300px;
+    overflow: auto;
+}
+.box .border-right {
+    border-right: 1px solid #f4f4f4;
+}
+.box .border-left {
+    border-left: 1px solid #f4f4f4;
+}
+.box.box-solid {
+    border-top: 0;
+}
+.box.box-solid>.box-header .btn.btn-default {
+    background: transparent;
+}
+.box.box-solid>.box-header .btn:hover, .box.box-solid>.box-header a:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+.box.box-solid.box-default {
+    border: 1px solid #d2d6de;
+}
+/*.box.box-solid.box-default>.box-header {*/
+/*    color: #444;*/
+/*    background: #d2d6de;*/
+/*    background-color: #d2d6de;*/
+/*}*/
+.box.box-solid.box-default>.box-header a, .box.box-solid.box-default>.box-header .btn {
+    color: #444;
+}
+/*.box.box-solid.box-primary {*/
+/*    border: 1px solid #3c8dbc;*/
+/*}*/
+/*.box.box-solid.box-primary>.box-header {*/
+/*    color: #fff;*/
+/*    background: #3c8dbc;*/
+/*    background-color: #3c8dbc;*/
+/*}*/
+.box.box-solid.box-primary>.box-header a, .box.box-solid.box-primary>.box-header .btn {
+    color: #fff;
+}
+/*.box.box-solid.box-info {*/
+/*    border: 1px solid #00c0ef;*/
+/*}*/
+/*.box.box-solid.box-info>.box-header {*/
+/*    color: #fff;*/
+/*    background: #00c0ef;*/
+/*    background-color: #00c0ef;*/
+/*}*/
+/*.box.box-solid.box-info>.box-header a, .box.box-solid.box-info>.box-header .btn {*/
+/*    color: #fff;*/
+/*}*/
+/*.box.box-solid.box-danger {*/
+/*    border: 1px solid #dd4b39;*/
+/*}*/
+/*.box.box-solid.box-danger>.box-header {*/
+/*    color: #fff;*/
+/*    background: #dd4b39;*/
+/*    background-color: #dd4b39;*/
+/*}*/
+/*.box.box-solid.box-danger>.box-header a, .box.box-solid.box-danger>.box-header .btn {*/
+/*    color: #fff;*/
+/*}*/
+/*.box.box-solid.box-warning {*/
+/*    border: 1px solid #f39c12;*/
+/*}*/
+/*.box.box-solid.box-warning>.box-header {*/
+/*    color: #fff;*/
+/*    background: #f39c12;*/
+/*    background-color: #f39c12;*/
+/*}*/
+/*.box.box-solid.box-warning>.box-header a, .box.box-solid.box-warning>.box-header .btn {*/
+/*    color: #fff;*/
+/*}*/
+/*.box.box-solid.box-success {*/
+/*    border: 1px solid #00a65a;*/
+/*}*/
+/*.box.box-solid.box-success>.box-header {*/
+/*    color: #fff;*/
+/*    background: #00a65a;*/
+/*    background-color: #00a65a;*/
+/*}*/
+/*.box.box-solid.box-success>.box-header a, .box.box-solid.box-success>.box-header .btn {*/
+/*    color: #fff;*/
+/*}*/
+/*.box.box-solid>.box-header>.box-tools .btn {*/
+/*    border: 0;*/
+/*    box-shadow: none;*/
+/*}*/
+/*.box.box-solid[class*='bg']>.box-header {*/
+/*    color: #fff;*/
+/*}*/
+.box .box-group>.box {
+    margin-bottom: 5px;
+}
+.box .knob-label {
+    text-align: center;
+    color: #333;
+    font-weight: 100;
+    font-size: 12px;
+    margin-bottom: 0.3em;
+}
+.box>.overlay, .overlay-wrapper>.overlay, .box>.loading-img, .overlay-wrapper>.loading-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%}
+.box .overlay, .overlay-wrapper .overlay {
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 3px;
+}
+/*.box .overlay>.fa, .overlay-wrapper .overlay>.fa {*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    margin-left: -15px;*/
+/*    margin-top: -15px;*/
+/*    color: #000;*/
+/*    font-size: 30px;*/
+/*}*/
+.box .overlay.dark, .overlay-wrapper .overlay.dark {
+    background: rgba(0, 0, 0, 0.5);
+}
+.box-header:before, .box-body:before, .box-footer:before, .box-header:after, .box-body:after, .box-footer:after {
+    content: " ";
+    display: table;
+}
+.box-header:after, .box-body:after, .box-footer:after {
+    clear: both;
+}
+.box-header {
+    color: #444;
+    display: block;
+    padding: 10px;
+    position: relative;
+}
+.box-header.with-border {
+    border-bottom: 1px solid #f4f4f4;
+}
+.collapsed-box .box-header.with-border {
+    border-bottom: none;
+}
+.box-header>.fa, .box-header>.glyphicon, .box-header>.ion, .box-header .box-title {
+    display: inline-block;
+    font-size: 18px;
+    margin: 0;
+    line-height: 1;
+}
+/*.box-header>.fa, .box-header>.glyphicon, .box-header>.ion {*/
+/*    margin-right: 5px;*/
+/*}*/
+.box-header>.box-tools {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+.box-header>.box-tools [data-toggle="tooltip"] {
+    position: relative;
+}
+.box-header>.box-tools.pull-right .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+.btn-box-tool {
+    padding: 5px;
+    font-size: 12px;
+    background: transparent;
+    color: #97a0b3;
+}
+.open .btn-box-tool, .btn-box-tool:hover {
+    color: #606c84;
+}
+.btn-box-tool.btn:active {
+    box-shadow: none;
+}
+/*.box-body {*/
+/*    border-top-left-radius: 0;*/
+/*    border-top-right-radius: 0;*/
+/*    border-bottom-right-radius: 3px;*/
+/*    border-bottom-left-radius: 3px;*/
+/*    padding: 10px;*/
+/*}*/
+.no-header .box-body {
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+.box-body>.table {
+    margin-bottom: 0;
+}
+.box-body .fc {
+    margin-top: 5px;
+}
+.box-body .full-width-chart {
+    margin: -19px;
+}
+.box-body.no-padding .full-width-chart {
+    margin: -9px;
+}
+.box-body .box-pane {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 3px;
+}
+.box-body .box-pane-right {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 0;
+}
+.box-footer {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top: 1px solid #f4f4f4;
+    padding: 10px;
+    background-color: #fff;
+}
+.direct-chat .box-body {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    position: relative;
+    overflow-x: hidden;
+    padding: 0;
+}
+.direct-chat.chat-pane-open .direct-chat-contacts {
+    -webkit-transform: translate(0,  0);
+    -ms-transform: translate(0,  0);
+    -o-transform: translate(0,  0);
+    transform: translate(0,  0);
+}
+.direct-chat-messages {
+    -webkit-transform: translate(0,  0);
+    -ms-transform: translate(0,  0);
+    -o-transform: translate(0,  0);
+    transform: translate(0,  0);
+    padding: 10px;
+    height: 250px;
+    overflow: auto;
+}
+.direct-chat-msg, .direct-chat-text {
+    display: block;
+}
+.direct-chat-msg {
+    margin-bottom: 10px;
+}
+.direct-chat-msg:before, .direct-chat-msg:after {
+    content: " ";
+    display: table;
+}
+.direct-chat-msg:after {
+    clear: both;
+}
+.direct-chat-messages, .direct-chat-contacts {
+    -webkit-transition: -webkit-transform .5s ease-in-out;
+    -moz-transition: -moz-transform .5s ease-in-out;
+    -o-transition: -o-transform .5s ease-in-out;
+    transition: transform .5s ease-in-out;
+}
+.direct-chat-text {
+    border-radius: 5px;
+    position: relative;
+    padding: 5px 10px;
+    background: #d2d6de;
+    border: 1px solid #d2d6de;
+    margin: 5px 0 0 50px;
+    color: #444;
+}
+.direct-chat-text:after, .direct-chat-text:before {
+    position: absolute;
+    right: 100%;
+    top: 15px;
+    border: solid transparent;
+    border-right-color: #d2d6de;
+    content: ' ';
+    height: 0;
+    width: 0;
+    pointer-events: none;
+}
+.direct-chat-text:after {
+    border-width: 5px;
+    margin-top: -5px;
+}
+.direct-chat-text:before {
+    border-width: 6px;
+    margin-top: -6px;
+}
+.rights .direct-chat-text {
+    margin-right: 50px;
+    margin-left: 0;
+}
+.rights .direct-chat-text:after, .rights .direct-chat-text:before {
+    right: auto;
+    left: 100%;
+    border-right-color: transparent;
+    border-left-color: #d2d6de;
+}
+.direct-chat-img {
+    border-radius: 50%;
+    float: left;
+    width: 40px;
+    height: 40px;
+}
+.rights .direct-chat-img {
+    float: right;
+}
+.direct-chat-info {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 12px;
+}
+.direct-chat-name {
+    font-weight: 600;
+}
+.direct-chat-timestamp {
+    color: #999;
+}
+.direct-chat-contacts-open .direct-chat-contacts {
+    -webkit-transform: translate(0,  0);
+    -ms-transform: translate(0,  0);
+    -o-transform: translate(0,  0);
+    transform: translate(0,  0);
+}
+.direct-chat-contacts {
+    -webkit-transform: translate(101%,  0);
+    -ms-transform: translate(101%,  0);
+    -o-transform: translate(101%,  0);
+    transform: translate(101%,  0);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 250px;
+    width: 100%;
+    background: #222d32;
+    color: #fff;
+    overflow: auto;
+}
+.contacts-list>li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin: 0;
+}
+.contacts-list>li:before, .contacts-list>li:after {
+    content: " ";
+    display: table;
+}
+.contacts-list>li:after {
+    clear: both;
+}
+.contacts-list>li:last-of-type {
+    border-bottom: none;
+}
+.contacts-list-img {
+    border-radius: 50%;
+    width: 40px;
+    float: left;
+}
+.contacts-list-info {
+    margin-left: 45px;
+    color: #fff;
+}
+.contacts-list-name, .contacts-list-status {
+    display: block;
+}
+.contacts-list-name {
+    font-weight: 600;
+}
+.contacts-list-status {
+    font-size: 12px;
+}
+.contacts-list-date {
+    color: #aaa;
+    font-weight: normal;
+}
+.contacts-list-msg {
+    color: #999;
+}
+
+/*.direct-chat-danger .rights>.direct-chat-text:after, .direct-chat-danger .right>.direct-chat-text:before {*/
+/*    border-left-color: #dd4b39;*/
+/*}*/
+.direct-chat-primary .rights>.direct-chat-text {
+    background: #055e73;
+    border-color: #055e73;
+    color: #fff;
+}
+.comment-border {
+    /*border: 1px solid lightgrey;*/
+    /*padding: 5px;*/
+
+}
+.comment-input {
+    border: none;
+    width: 620px;
+    resize: none;
+    text-indent: 10px;
+}
+.comment-button{
+    border: none;
+    background-color: white;
+    margin-right: 10px;
+    color: #055e73;
+    font-size: 20px;
+}

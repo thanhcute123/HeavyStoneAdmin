@@ -18,7 +18,8 @@ class PostController extends Controller
      */
     public function getAll()
     {
-        $post = Post::simplePaginate(5);
+//        $post = Post::simplePaginate(5);
+        $post = Post::where('status', '=', self::STATUS_WAIT)->get();
         return response()->json($post);
     }
 
@@ -49,7 +50,19 @@ class PostController extends Controller
      */
     public function create(Request $request)
     {
-        $post = Post::create($request->all());
+        $arr = $request->all();
+        $faculty = $arr['faculty'];
+        $major = $arr['major'];
+        $tags = [
+            'faculty' => $faculty,
+            'major' => $major
+        ];
+        $post = Post::create([
+            'id_user' => $arr['id_user'],
+            'theme' => $arr['theme'],
+            'content' => $arr['content'],
+            'tags' => json_encode($tags)
+        ]);
         return response()->json($post);
     }
 
@@ -74,7 +87,17 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::findOrFail($id);
-        $post->update($request->all());
+        $status = $request->get('status');
+        if ($status == "1") {
+            $post->update([
+                'status' => SELF::STATUS_APPROVED
+            ]);
+        } else if ($status == "2"){
+            $post->update([
+                'status' => SELF::STATUS_DELETED
+            ]);
+        };
+
         return response()->json($post);
     }
 
@@ -84,13 +107,12 @@ class PostController extends Controller
      * @param  \App\Models\Api\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function delete(Request $request, $id)
-    {
-        $post = Post::findOrFail($id);
-        $post->update([
-            $request->all(),
-            'status' => self::STATUS_DELETED
-        ]);
-        return response()->json($post);
-    }
+//    public function delete(Request $request, $id)
+//    {
+//        $post = Post::findOrFail($id);
+//        $post->update([
+//            'status' => self::STATUS_DELETED
+//        ]);
+//        return response()->json($post);
+//    }
 }

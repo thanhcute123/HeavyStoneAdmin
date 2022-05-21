@@ -11,6 +11,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -84,3 +85,6 @@ Route::get('/document/getCount', [DocumentController::class, 'getCount'])->name(
 
 //Api thao tác với ngành học
 Route::get('/major/getAll', [MajorController::class, 'getAll'])->name('getAll');
+
+//Api đăng nhập
+Route::post('/admin/login', [LoginController::class, 'onLogin'])->name('admin.login');

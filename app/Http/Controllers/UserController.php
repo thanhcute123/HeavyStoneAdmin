@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Api\User;
+use App\Models\Api\Account;
 use http\Env\Response;
 use Illuminate\Http\Request;
 
@@ -52,7 +53,19 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
-        $user = User::create($request->all());
+        $account = Account::create([
+            "id_user" => $request->get('id_user'),
+            "email" => $request->get('email'),
+            "password" => md5($request->get('password'))
+        ]);
+        $user = User::create([
+            "id_user" => $request->get('id_user'),
+            "username" => $request->get('username'),
+            "sex" => $request->get('sex'),
+            "phone" => $request->get('phone'),
+            "id_department" => $request->get('id_department')
+        ]);
+
         return response()->json($user);
     }
 

@@ -9,6 +9,8 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ClubController;
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\MajorController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,6 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 //Api thao tác với user
 Route::get('/user/getAll', [UserController::class, 'getAll'])->name('getAll');
+Route::get('/user/getCount', [UserController::class, 'getCount'])->name('getCount');
 Route::get('/user/{id}', [UserController::class, 'getId'])->name('getId');
 Route::post('/user/create', [UserController::class, 'create'])->name('create');
 Route::put('/user/update/{id}', [UserController::class, 'update'])->name('update');
@@ -33,6 +36,8 @@ Route::get('/user/search/{name}', [UserController::class, 'search'])->name('sear
 
 //Api thao tác với bài đăng
 Route::get('/post/getAll', [PostController::class, 'getAll'])->name('getAll');
+Route::get('/post/getCount', [PostController::class, 'getCount'])->name('getCount');
+Route::get('/post/getCountRequest', [PostController::class, 'getCountRequest'])->name('getCountRequest');
 Route::get('/post/{id}', [PostController::class, 'getId'])->name('getId');
 Route::post('/post/create', [PostController::class, 'create'])->name('create');
 Route::put('/post/update/{id}', [PostController::class, 'update'])->name('update');
@@ -73,3 +78,9 @@ Route::put('/club/update/{id}', [ClubController::class, 'update'])->name('update
 Route::delete('/club/delete/{id}', [ClubController::class, 'delete'])->name('delete');
 Route::get('/club/search/{name}', [ClubController::class, 'search'])->name('search');
 
+//Api thao tác với tài liệu
+Route::get('/document/getAll', [DocumentController::class, 'getAll'])->name('getAll');
+Route::get('/document/getCount', [DocumentController::class, 'getCount'])->name('getCount');
+
+//Api thao tác với ngành học
+Route::get('/major/getAll', [MajorController::class, 'getAll'])->name('getAll');

@@ -18,11 +18,19 @@ class PostController extends Controller
      */
     public function getAll()
     {
-//        $post = Post::simplePaginate(5);
         $post = Post::where('status', '=', self::STATUS_WAIT)->get();
         return response()->json($post);
     }
-
+    public function getCount()
+    {
+        $count = Post::where('status', '=', self::STATUS_APPROVED)->count();
+        return response()->json($count);
+    }
+    public function getCountRequest()
+    {
+        $count = Post::where('status', '=', self::STATUS_WAIT)->count();
+        return response()->json($count);
+    }
     /**
      * Display the specified resource.
      *

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Api\User;
+use http\Env\Response;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -19,7 +20,11 @@ class UserController extends Controller
         $user = User::whereNull('status')->get();
         return response()->json($user);
     }
-
+    public function getCount()
+    {
+        $count = User::whereNull('status')->count();
+        return response()->json($count);
+    }
     /**
      * Display the specified resource.
      *

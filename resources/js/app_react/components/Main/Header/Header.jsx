@@ -33,7 +33,7 @@ const Header = () => {
                             <li className="nav-item dropdown no-arrow">
                                 <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span className="mr-2 d-none d-lg-inline text-gray-600 small">Vũ Thu Thanh</span>
+                                    <span className="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                                     <img className="img-profile rounded-circle"
                                          src={avatar} />
                                 </a>

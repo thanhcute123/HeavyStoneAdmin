@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import signin_login from '../../img/1.png';
 import signin_text from '../../img/2.png';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Signin.css";
 
 

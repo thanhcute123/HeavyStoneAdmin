@@ -7,6 +7,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import {CKEditor} from "@ckeditor/ckeditor5-react";
 
 import "./Post.css";
+import moment from "moment";
 
 const Post = () => {
     const [show, setShow] = useState(false);
@@ -37,6 +38,10 @@ const Post = () => {
                         // console.log(result.data[i])
                         tags = JSON.parse(result[i].tags);
                         console.log("tags----",tags);
+                        let date = moment(result[i].created_at);
+                        let dateComponent = date.utc().format('YYYY-MM-DD');
+                        let timeComponent = date.utc().format('HH:mm:ss');
+                        let time = dateComponent + " " + timeComponent;
                         rows.push({
                             id: result[i].id,
                             id_user: result[i].id_user,
@@ -44,7 +49,7 @@ const Post = () => {
                             content: result[i].content,
                             faculty: tags.faculty,
                             major: tags.major,
-                            created_at: result[i].created_at
+                            created_at: time
                         });
                     }
 
@@ -143,7 +148,7 @@ const Post = () => {
                 >
                     <Modal.Header>
                         <Modal.Title>
-                            <div className="uppost-title">Add User</div>
+                            <div className="uppost-title">Post</div>
                         </Modal.Title>
                     </Modal.Header>
                     <div className="d-flex justify-content-around">
@@ -232,7 +237,7 @@ const Post = () => {
 
             {dataPost.map((post, idx) =>(
                 <div key={idx} className="post d-flex align-items-center">
-                    <div className="col-lg-9 border-right">
+                    <div className="col-lg-9 ">
                         <div className="doc-tag">
                             <ul className="d-flex">
                                 <li className="doc-tag-item">{post.faculty}</li>
@@ -259,9 +264,9 @@ const Post = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-2">
+                    <div className="col-lg-2 border-right">
                         <div className="mb-1">Trạng thái</div>
-                        <li className="doc-tag-item">Bài viết đang chờ duyệt...</li>
+                        <li className="doc-tag-item status">Bài viết đang chờ duyệt...</li>
 
                     </div>
                     <div className="col-lg-1">

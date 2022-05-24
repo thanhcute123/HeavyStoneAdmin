@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Api\User;
 use App\Models\Api\Account;
-use http\Env\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -20,6 +20,19 @@ class UserController extends Controller
 //        $user = User::simplePaginate(5);
         $user = User::whereNull('status')->get();
         return response()->json($user);
+    }
+    public function upLoadAvatar(Request $request, $id)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'avatar' => 'image'
+            ]);
+        }
+        catch (\Exception $e)
+        {
+            return response()->json(array("status" => false, "error" => "Email hoặc mật khẩu không đúng!"));
+        }
+
     }
     public function getCount()
     {

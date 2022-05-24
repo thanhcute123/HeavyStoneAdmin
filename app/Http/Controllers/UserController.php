@@ -26,13 +26,32 @@ class UserController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'avatar' => 'image'
+            ], [
+                'image' => "Avatar phải là kiểu ảnh"
             ]);
+            $errors = $validator->errors();
+            if ($validator->fails())  {
+                $error = $validator->errors()->all()[0];
+                return response()->json(["status" => false, "message" => $errors, "data" => []], 422);
+            } else {
+                $user = User::findOrFail($id);
+                $avatar = $request->avatar;
+                if ($avatar && $avatar->isValid()) {
+                    $file_name = time().".".$avatar->extension();
+                    $avatar->move(public_path('images'), $file_name);
+                    $path = "public/images/$file_name";
+                    $avatar = $path;
+                }
+                $user->update([
+                    "avatar" => $avatar
+                ]);
+                return response()->json(["status" => true, "message" => "Upload Avatar thành công!", "data" => $user]);
+            }
         }
         catch (\Exception $e)
         {
-            return response()->json(array("status" => false, "error" => "Email hoặc mật khẩu không đúng!"));
+            return response()->json(["status" => false, "message" => $e->getMessage(), "data" => []], 500);
         }
-
     }
     public function getCount()
     {

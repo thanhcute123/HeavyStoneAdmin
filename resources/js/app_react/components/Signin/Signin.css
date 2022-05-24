@@ -1188,3 +1188,10 @@
     color: #055e73;
     font-size: 20px;
 }
+.error-msg {
+    margin-top: 5px ;
+    font-size: 12px;
+    width: 100%;
+    color: red;
+    font-weight: 500;
+}

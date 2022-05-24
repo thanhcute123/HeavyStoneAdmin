@@ -13,7 +13,7 @@
 <div id="application"></div>
 
 <script src="{{ asset('js/application.js') }}"></script>
-<script src="{{asset('public/ckeditor/ckeditor.js')}}"></script>
+
 
 <script>
     config = {};

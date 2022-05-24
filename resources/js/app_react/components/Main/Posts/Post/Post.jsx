@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import axios from "axios";
 import avatar from "../../../../img/undraw_profile.svg";
 
@@ -8,8 +8,12 @@ import {CKEditor} from "@ckeditor/ckeditor5-react";
 
 import "./Post.css";
 import moment from "moment";
+import Title from "../Title/Title";
+import {NameFaculty} from "../../../Store/ContextNameFaculty";
 
-const Post = () => {
+const Post = ({nameFaclty}) => {
+    const context = useContext(NameFaculty)
+    // console.log("tesstName-----", context.nameFaculty)
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -65,6 +69,8 @@ const Post = () => {
                 }
             )
     }
+
+
 
     const getDataUser = () => {
         setIsLoaded(true);
@@ -135,115 +141,119 @@ const Post = () => {
 
     }, [])
     return (
+        <div className="posts">
+            <div>
+                <Title />
+                <form
+                    onSubmit={(ev) => {
 
-        <div>
-            <form
-                onSubmit={(ev) => {
-
-                }}
-            >
-                <Modal show={show} onHide={handleClose}
-                       aria-labelledby="contained-modal-title-vcenter"
-                       centered
+                    }}
                 >
-                    <Modal.Header>
-                        <Modal.Title>
-                            <div className="uppost-title">Post</div>
-                        </Modal.Title>
-                    </Modal.Header>
-                    <div className="d-flex justify-content-around">
-                        <div className="w-100 border-end">
+                    <Modal show={show} onHide={handleClose}
+                           aria-labelledby="contained-modal-title-vcenter"
+                           centered
+                    >
+                        <Modal.Header>
+                            <Modal.Title>
+                                <div className="uppost-title">Post</div>
+                            </Modal.Title>
+                        </Modal.Header>
+                        <div className="d-flex justify-content-around">
+                            <div className="w-100 border-end">
 
-                            <Modal.Body>
+                                <Modal.Body>
 
-                                <div className="w-100">
-                                    <div className="form-group">
-                                        <label>Id</label>
-                                        <input disabled  type="text" className="form-control title" value={formDataPostUpdate.id_user}/>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Theme</label>
-                                        <input disabled type="text" className="form-control title" value={formDataPostUpdate.theme}/>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Content</label>
-                                        {/*<input type="text" className="form-control title" onChange={(e) => {*/}
+                                    <div className="w-100">
+                                        <div className="form-group">
+                                            <label>Id</label>
+                                            <input disabled  type="text" className="form-control title" value={formDataPostUpdate.id_user}/>
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Theme</label>
+                                            <input disabled type="text" className="form-control title" value={formDataPostUpdate.theme}/>
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Content</label>
+                                            {/*<input type="text" className="form-control title" onChange={(e) => {*/}
 
-                                        {/*}}/>*/}
-                                        <CKEditor disabled data={ formDataPostUpdate.content }
-                                                  onChange={(event, editor) => {
-                                                      const data = editor.getData();
-                                                      updateFieldContent(data,'content');
+                                            {/*}}/>*/}
+                                            <CKEditor disabled data={ formDataPostUpdate.content }
+                                                      onChange={(event, editor) => {
+                                                          const data = editor.getData();
+                                                          updateFieldContent(data,'content');
                                                       }}
-                                                        className="mt-3 wrap-ckeditor" editor={ClassicEditor} />
-                                        {/*<CKEditor id="102" value="something" editor={ClassicEditor} onInput={(e) => {e.target.value}} />*/}
-                                    </div>
+                                                      className="mt-3 wrap-ckeditor" editor={ClassicEditor} />
+                                            {/*<CKEditor id="102" value="something" editor={ClassicEditor} onInput={(e) => {e.target.value}} />*/}
+                                        </div>
 
-                                    <div className="form-group">
-                                        <label>Status</label>
-                                        <div className="d-flex">
-                                            <div className="form-check m-3">
-                                                <input className="form-check-input" type="radio" name="flexRadioDefault"
-                                                       id="flexRadioDefault1" checked value={0} onChange={(e) => {
-                                                           updateField(e,'status');
-                                                }}/>
-                                                <label className="form-check-label" htmlFor="flexRadioDefault1">
-                                                    Chờ duyệt
-                                                </label>
+                                        <div className="form-group">
+                                            <label>Status</label>
+                                            <div className="d-flex">
+                                                <div className="form-check m-3">
+                                                    <input className="form-check-input" type="radio" name="flexRadioDefault"
+                                                           id="flexRadioDefault1" checked value={0} onChange={(e) => {
+                                                        updateField(e,'status');
+                                                    }}/>
+                                                    <label className="form-check-label" htmlFor="flexRadioDefault1">
+                                                        Chờ duyệt
+                                                    </label>
+                                                </div>
+                                                <div className="form-check m-3">
+                                                    <input className="form-check-input" type="radio" name="flexRadioDefault"
+                                                           id="flexRadioDefault2" value={1} onChange={(e) => {
+                                                        updateField(e,'status');
+                                                    }}/>
+                                                    <label className="form-check-label" htmlFor="flexRadioDefault2">
+                                                        duyệt
+                                                    </label>
+                                                </div>
+                                                <div className="form-check m-3">
+                                                    <input className="form-check-input" type="radio" name="flexRadioDefault"
+                                                           id="flexRadioDefault2" value={2} onChange={(e) => {
+                                                        updateField(e,'status');
+                                                    }}/>
+                                                    <label className="form-check-label" htmlFor="flexRadioDefault2">
+                                                        Xóa
+                                                    </label>
+                                                </div>
                                             </div>
-                                            <div className="form-check m-3">
-                                                <input className="form-check-input" type="radio" name="flexRadioDefault"
-                                                       id="flexRadioDefault2" value={1} onChange={(e) => {
-                                                    updateField(e,'status');
-                                                }}/>
-                                                <label className="form-check-label" htmlFor="flexRadioDefault2">
-                                                    duyệt
-                                                </label>
-                                            </div>
-                                            <div className="form-check m-3">
-                                                <input className="form-check-input" type="radio" name="flexRadioDefault"
-                                                       id="flexRadioDefault2" value={2} onChange={(e) => {
-                                                    updateField(e,'status');
-                                                }}/>
-                                                <label className="form-check-label" htmlFor="flexRadioDefault2">
-                                                    Xóa
-                                                </label>
-                                            </div>
+
                                         </div>
 
                                     </div>
 
-                                </div>
+                                </Modal.Body>
+                                <Modal.Footer>
 
-                            </Modal.Body>
-                            <Modal.Footer>
+                                    <div>
+                                        <button type="button" className="btn btn-secondary"  data-dismiss="modal" onClick={handleClose}>Hủy bỏ</button>
+                                    </div>
 
-                                <div>
-                                    <button type="button" className="btn btn-secondary"  data-dismiss="modal" onClick={handleClose}>Hủy bỏ</button>
-                                </div>
+                                    <div>
+                                        <button type="submit" className="btn btn-primary" onClick={(e) => { handleSubmit(e); handleClose()}}>Ghi lại</button>
+                                    </div>
+                                </Modal.Footer>
+                            </div>
 
-                                <div>
-                                    <button type="submit" className="btn btn-primary" onClick={(e) => { handleSubmit(e); handleClose()}}>Ghi lại</button>
-                                </div>
-                            </Modal.Footer>
+
                         </div>
 
 
-                    </div>
+                    </Modal>
+                </form>
 
+                {dataPost.map((post, idx) =>(
 
-                </Modal>
-            </form>
+                    post.faculty === context.nameFaculty &&
 
-            {dataPost.map((post, idx) =>(
-                <div key={idx} className="post d-flex align-items-center">
-                    <div className="col-lg-9 ">
-                        <div className="doc-tag">
-                            <ul className="d-flex">
-                                <li className="doc-tag-item">{post.faculty}</li>
-                                <li className="doc-tag-item">{post.major}</li>
-                            </ul>
-                        </div>
+                    <div key={idx} className="post d-flex align-items-center">
+                        <div className="col-lg-9 ">
+                            <div className="doc-tag">
+                                <ul className="d-flex">
+                                    <li className="doc-tag-item">{post.faculty}</li>
+                                    <li className="doc-tag-item">{post.major}</li>
+                                </ul>
+                            </div>
                             {dataUser.map((user, idx) =>(
                                 user.id_user === post.id_user &&
                                 <div className="d-flex align-items-center">
@@ -258,31 +268,34 @@ const Post = () => {
                             ))}
 
 
-                        <div className="ml-2">
-                            <div className="description mt-2">
-                                {post.theme}
+                            <div className="ml-2">
+                                <div className="description mt-2">
+                                    {post.theme}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-lg-2 border-right">
-                        <div className="mb-1">Trạng thái</div>
-                        <li className="doc-tag-item status">Bài viết đang chờ duyệt...</li>
+                        <div className="col-lg-2 border-right">
+                            <div className="mb-1">Trạng thái</div>
+                            <li className="doc-tag-item status">Bài viết đang chờ duyệt...</li>
+
+                        </div>
+                        <div className="col-lg-1">
+                            <button className="rounded-pill button-detail" onClick={() => {
+                                formPostUpdate(post);
+                                handleShow()
+                            }}>
+                                detail
+                            </button>
+                        </div>
 
                     </div>
-                    <div className="col-lg-1">
-                        <button className="rounded-pill button-detail" onClick={() => {
-                            formPostUpdate(post);
-                            handleShow()
-                        }}>
-                            detail
-                        </button>
-                    </div>
 
-                </div>
+                ))}
 
-            ))}
-
+            </div>
         </div>
+
+
     )
 }
 

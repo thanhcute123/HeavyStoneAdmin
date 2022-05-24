@@ -10,3 +10,14 @@
 .input-search:focus {
     outline: none;
 }
+.dropdownz {
+    background-color: white !important;
+    border: none !important;
+    color: black !important ;
+
+}
+.dropdownz:hover {
+    background-color: white !important;
+    border: none !important;
+    color: black !important;
+}

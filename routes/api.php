@@ -12,6 +12,7 @@ use App\Http\Controllers\ClubController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ChangePasswordController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -88,3 +89,9 @@ Route::get('/major/getAll', [MajorController::class, 'getAll'])->name('getAll');
 
 //Api đăng nhập
 Route::post('/admin/login', [LoginController::class, 'onLogin'])->name('admin.login');
+
+//Api đổi mật khẩu
+Route::post('/admin/changepassword/{id}', [ChangePasswordController::class, 'changepassword'])->name('admin.changepassword');
+
+//Api upload avatar
+Route::post('/admin/upLoadAvatar/{id}', [UserController::class, 'upLoadAvatar'])->name('upLoadAvatar');

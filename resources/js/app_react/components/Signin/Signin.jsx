@@ -91,8 +91,8 @@ const Signin = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         adminSignin()
-        // navigate('/');
-        // window.location.reload();
+        navigate('/');
+        window.location.reload();
 
 
 

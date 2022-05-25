@@ -14,5 +14,13 @@
 
 <script src="{{ asset('js/application.js') }}"></script>
 
+
+<script>
+    config = {};
+    config.entities_latin = false;
+    config.language = "vi";
+    CKEDITOR.replace("body_edit_post", config);
+</script>
+
 </body>
 </html>

@@ -25,7 +25,8 @@ const Table = () => {
         username:"",
         sex:"",
         phone:"",
-        id_department:""
+        id_department:"",
+        email:""
     });
     const [formDataUserUpdate, setFormDataUserUpdate] = useState()
 
@@ -101,7 +102,8 @@ const Table = () => {
             username: formDataUser.username,
             sex: formDataUser.sex,
             phone: formDataUser.phone,
-            id_department: formDataUser.id_department
+            id_department: formDataUser.id_department,
+            email: formDataUser.email
             // postData
         })
             .then(res => {
@@ -110,7 +112,8 @@ const Table = () => {
                     username:"",
                     sex:"",
                     phone:"",
-                    id_department:""
+                    id_department:"",
+                    email:""
                 }
 
                 setFormDataUser(resetModal);
@@ -127,7 +130,8 @@ const Table = () => {
             username: formDataUserUpdate.username,
             sex: formDataUserUpdate.sex,
             phone: formDataUserUpdate.phone,
-            id_department: formDataUserUpdate.id_department
+            id_department: formDataUserUpdate.id_department,
+            email: formDataUserUpdate.email
             // postData
         })
             .then(res => {
@@ -248,6 +252,12 @@ const Table = () => {
                                                     }}/>
                                                 </div>
                                                 <div className="form-group">
+                                                    <label>Email</label>
+                                                    <input type="text" className="form-control title" value={formDataUser.email} onChange={(e) => {
+                                                        updateField(e, "email")
+                                                    }}/>
+                                                </div>
+                                                <div className="form-group">
                                                     <label>Faculty</label>
                                                     {/*<input type="text" className="form-control title" value={formDataUser.id_department} onChange={(e) => {*/}
                                                     {/*    updateField(e, "id_department")*/}
@@ -343,6 +353,13 @@ const Table = () => {
                                                             updateFieldUpdate(e, "phone")
                                                         }}/>
                                                     </div>
+                                                    <div className="form-group">
+                                                        <label>Phone</label>
+                                                        <input type="text" className="form-control title" value={formDataUserUpdate.email} onChange={(e) => {
+                                                            updateFieldUpdate(e, "email")
+                                                        }}/>
+                                                    </div>
+
                                                     <div className="form-group">
                                                         <label>Faculty</label>
                                                         {/*<input type="text" className="form-control title" value={formDataUserUpdate.id_department} onChange={(e) => {*/}

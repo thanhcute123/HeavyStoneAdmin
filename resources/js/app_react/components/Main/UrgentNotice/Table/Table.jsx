@@ -20,8 +20,49 @@ const Table = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [dataNoti, setDataNoti ] = useState([]);
+    const [formDataNoti, setFormDataNoti] = useState({
+        theme: "",
+        content:""
+    });
 
-    const getDataUrnotiApi = () => {
+    const [formUpdateNoti, setFormUpdateNoti] = useState([]);
+    const [id, setId] = useState();
+
+
+    const set_id = (type) => {
+        setId(type);
+        console.log("id---", id);
+    }
+
+    const  updateField = (e, key) => {
+        formDataNoti[key] = e.target.value;
+        setFormDataNoti({...formDataNoti});
+        console.log(formDataNoti);
+    }
+
+    const  updateFieldContent = (data, key) => {
+        formDataNoti[key] = data;
+        setFormDataNoti({...formDataNoti});
+        console.log(formDataNoti);
+    }
+
+    const  updateFieldNotiUpdate = (e, key) => {
+        formUpdateNoti[key] = e.target.value;
+        setFormUpdateNoti({...formUpdateNoti});
+        console.log("bbbb---", formUpdateNoti);
+    }
+
+    const  updateFieldNotiUpdateContent = (data, key) => {
+        formUpdateNoti[key] = data;
+        setFormUpdateNoti({...formUpdateNoti});
+        console.log("bbbb---", formUpdateNoti);
+    }
+
+    const setFormUpdate = (data) => {
+      setFormUpdateNoti(data);
+    }
+
+    const getDataNotiApi = () => {
         setIsLoaded(true);
         axios.get("http://127.0.0.1:8000/api/notification/getAll")
             .then(res => res.data)
@@ -40,8 +81,76 @@ const Table = () => {
                 }
             )
     }
+
+    const doInsertNoti = () => {
+
+            const notiData = formDataNoti;
+            console.log("notiData---", formDataNoti);
+            // let id = formDataPostUpdate.id
+            axios.post(`http://127.0.0.1:8000/api/notification/create`,{
+
+                theme: formDataNoti.theme,
+                content: formDataNoti.content,
+                // postData
+            })
+                .then(res => {
+                    const resetModal = {
+                        theme: "",
+                        content: ""
+                    }
+
+                    setDataNoti(resetModal);
+                    getDataNotiApi()
+                })
+
+
+
+    }
+
+    const doUpdatetNoti = () => {
+        const notiData = formUpdateNoti;
+        console.log("postData---", formUpdateNoti);
+
+        axios.put(`http://127.0.0.1:8000/api/notification/update/${id}`,{
+
+            theme: formUpdateNoti.theme,
+            content: formUpdateNoti.content
+            // postData
+        })
+            .then(res => {
+                getDataNotiApi()
+            })
+
+
+    }
+
+    const doDeleteUser = (id) => {
+
+        axios.delete(`http://127.0.0.1:8000/api/notification/delete/${id}`,{
+
+            // postData
+        })
+            .then(res => {
+                alert("Xác nhận xóa mục đã chọn")
+                getDataNotiApi()
+
+            })
+
+
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if(id != undefined) {
+            doUpdatetNoti();
+        }else {
+            doInsertNoti();
+
+        }
+
+    }
     useEffect(() => {
-        getDataUrnotiApi();
+        getDataNotiApi();
 
     }, [])
 
@@ -52,68 +161,107 @@ const Table = () => {
     } else {
         return(
             <div className="w-100">
-                <Modal show={show} onHide={handleClose}
-                       size="xl"
-                       aria-labelledby="contained-modal-title-vcenter"
-                       centered
+                <form
+                    onSubmit={(ev) => {
+                        handleSubmit(ev);
+                    }}
                 >
-                    <Modal.Header>
-                        <Modal.Title>
-                            <div className="uppost-title">Thêm thông báo khẩn cấp</div>
-                        </Modal.Title>
-                    </Modal.Header>
-                    <div className="d-flex justify-content-around">
-                        <div className="w-100 border-end">
+                    <Modal show={show} onHide={handleClose}
+                           size="xl"
+                           aria-labelledby="contained-modal-title-vcenter"
+                           centered
+                    >
+                        <Modal.Header>
+                            <Modal.Title>
+                                <div className="uppost-title">Thêm thông báo</div>
+                            </Modal.Title>
+                        </Modal.Header>
+                        <div className="d-flex justify-content-around">
+                            <div className="w-100 border-end">
 
-                            <Modal.Body>
+                                <Modal.Body>
 
-                                <div className="w-100">
-                                    <form>
-                                        <div className="form-group">
-                                            <label>Tiêu đề thông báo</label>
-                                            <input type="text" className="form-control title"/>
-                                        </div>
-                                        <div className="form-group">
-                                            <label>Nội dung thông báo</label>
-                                            {/*<input type="text" className="form-control title"/>*/}
-                                            <textarea id="body_edit_post" className="form-control"></textarea>
-                                        </div>
-                                        {/*<div className="w-50">*/}
-                                        <CKEditor className="mt-3 wrap-ckeditor" editor={ClassicEditor}/>
-                                        {/*</div>*/}
-                                        {/*<Editor*/}
-                                        {/*    name="description"*/}
-                                        {/*    onChange={(data) => {*/}
-                                        {/*        setData(data);*/}
-                                        {/*    }}*/}
-                                        {/*    editorLoaded={editorLoaded}*/}
-                                        {/*/>*/}
+                                    <div className="w-100">
+                                        {id == undefined ?
+                                            <div>
+                                                <div className="form-group">
+                                                    <label>Tiêu đề thông báo</label>
+                                                    <input value={formDataNoti.theme} type="text" className="form-control title" onChange={(e) => {
+                                                        updateField(e, 'theme')
+                                                    }}/>
+                                                </div>
 
-                                    </form>
-                                </div>
+                                                <div className="form-group">
+                                                    <label>Nội dung bài viết</label>
+                                                    <CKEditor data={ formDataNoti.content }
+                                                              onChange={(event, editor) => {
+                                                                  const data = editor.getData();
+                                                                  updateFieldContent(data,'content');
+                                                              }}
+                                                              className="mt-3 wrap-ckeditor" editor={ClassicEditor} />
+                                                </div>
 
-                            </Modal.Body>
-                            <Modal.Footer>
-                                <Button className="btn-secondary" onClick={handleClose}>Hủy</Button>
-                                <Button className=" button-uppost" onClick={handleClose}>
-                                    Đăng
-                                </Button>
-                            </Modal.Footer>
+
+
+                                            </div> :
+
+                                            <div>
+                                                <div className="form-group">
+                                                    <label>Tiêu đề thông báo</label>
+                                                    <input value={formUpdateNoti.theme} type="text" className="form-control title" onChange={(e) => {
+                                                        updateFieldNotiUpdate(e, 'theme')
+                                                    }}/>
+                                                </div>
+
+                                                <div className="form-group">
+                                                    <label>Nội dung bài viết</label>
+                                                    <CKEditor data={ formUpdateNoti.content }
+                                                              onChange={(event, editor) => {
+                                                                  const data = editor.getData();
+                                                                  updateFieldNotiUpdateContent(data,'content');
+                                                              }}
+                                                              className="mt-3 wrap-ckeditor" editor={ClassicEditor} />
+                                                </div>
+
+
+
+                                            </div>
+
+
+                                        }
+                                    </div>
+
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    {/*<Button className="btn-secondary" onClick={handleClose}>Hủy</Button>*/}
+                                    {/*<Button type="submit" className=" button-uppost" onClick={handleClose}>*/}
+                                    {/*    Add*/}
+                                    {/*</Button>*/}
+                                    <div>
+                                        <button type="button" className="btn btn-secondary"  data-dismiss="modal" onClick={handleClose}>Hủy bỏ</button>
+                                    </div>
+
+                                    <div>
+                                        <button type="submit" className="btn btn-primary" onClick={(e) => {handleSubmit(e); handleClose()}}>Ghi lại</button>
+                                    </div>
+                                </Modal.Footer>
+                            </div>
+
+
                         </div>
 
 
-                    </div>
-                    {/*<Modal.Footer>*/}
-                    {/*    <Button variant="secondary" onClick={handleClose}>*/}
-                    {/*        Đăng*/}
-                    {/*    </Button>*/}
-                    {/*</Modal.Footer>*/}
+                    </Modal>
+                </form>
 
-                </Modal>
+
                 <div className="card shadow mb-4 card-table">
                     <div className="card-body">
                         <div className="table-add">
-                            <button className="button-add" onClick={handleShow}>+ Add</button>
+                            <button className="button-add" onClick={() => {
+                                set_id(undefined);
+                                handleShow()
+                            }}>+ Add</button>
                         </div>
                         <div className="table-search">
                             <input placeholder="Search" size="40" type="text" />
@@ -137,14 +285,22 @@ const Table = () => {
                                         <td>{noti.theme}</td>
                                         <td>{noti.created_at}</td>
                                         <td>
-                                            <a href=""
-                                               className="btn btn-primary btn-sm mr-1">
+
+                                            <button
+                                                className="btn btn-primary btn-sm mr-1" onClick={() => {
+                                                    set_id(noti.id)
+                                                    setFormUpdate(noti)
+                                                    handleShow()
+
+                                            }}>
                                                 <FontAwesomeIcon icon={faEdit}/>
-                                            </a>
-                                            <a className="btn btn-danger btn-sm del-post-list"
-                                               data-id="">
+                                            </button>
+                                            <button className="btn btn-danger btn-sm del-post-list"
+                                                    data-id="" onClick={() => {
+                                                        doDeleteUser(noti.id)
+                                            }}>
                                                 <FontAwesomeIcon icon={faTrashAlt}/>
-                                            </a>
+                                            </button>
                                         </td>
                                     </tr>
                                 ))}

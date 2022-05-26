@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Api\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -66,13 +67,38 @@ class PostController extends Controller
             'faculty' => $faculty,
             'major' => $major
         ];
-        $post = Post::create([
-            'id_user' => $arr['id_user'],
-            'theme' => $arr['theme'],
-            'content' => $arr['content'],
-            'tags' => json_encode($tags)
-        ]);
-        return response()->json($post);
+        try {
+            $validator = Validator::make($request->all(), [
+                'image' => 'image'
+            ], [
+                'image' => "Avatar phải là kiểu ảnh"
+            ]);
+            $errors = $validator->errors();
+            if ($validator->fails())  {
+                $error = $validator->errors()->all()[0];
+                return response()->json(["status" => false, "message" => $errors, "data" => []], 422);
+            } else {
+                $image = $request->image;
+                if ($image && $image->isValid()) {
+                    $file_name = time().".".$image->extension();
+                    $image->move(public_path('images'), $file_name);
+                    $path = "public/images/$file_name";
+                    $image = $path;
+                }
+                $post = Post::create([
+                    'id_user' => $arr['id_user'],
+                    'theme' => $arr['theme'],
+                    'content' => $arr['content'],
+                    'image' => $image,
+                    'tags' => json_encode($tags)
+                ]);
+                return response()->json($post);
+            }
+        }
+        catch (\Exception $e)
+        {
+            return response()->json(["status" => false, "message" => $e->getMessage(), "data" => []], 500);
+        }
     }
 
     public function createPostClub(Request $request)
@@ -82,14 +108,39 @@ class PostController extends Controller
         $tags = [
             'club' => $club
         ];
-        $post = Post::create([
-            'id_user' => $arr['id_user'],
-            'theme' => $arr['theme'],
-            'content' => $arr['content'],
-            'tags' => json_encode($tags),
-            'status' => self::STATUS_POST_CLUB
-        ]);
-        return response()->json($post);
+        try {
+            $validator = Validator::make($request->all(), [
+                'image' => 'image'
+            ], [
+                'image' => "Avatar phải là kiểu ảnh"
+            ]);
+            $errors = $validator->errors();
+            if ($validator->fails())  {
+                $error = $validator->errors()->all()[0];
+                return response()->json(["status" => false, "message" => $errors, "data" => []], 422);
+            } else {
+                $image = $request->image;
+                if ($image && $image->isValid()) {
+                    $file_name = time().".".$image->extension();
+                    $image->move(public_path('images'), $file_name);
+                    $path = "public/images/$file_name";
+                    $image = $path;
+                }
+                $post = Post::create([
+                    'id_user' => $arr['id_user'],
+                    'theme' => $arr['theme'],
+                    'content' => $arr['content'],
+                    'image' => $image,
+                    'tags' => json_encode($tags),
+                    'status' => self::STATUS_POST_CLUB
+                ]);
+                return response()->json($post);
+            }
+        }
+        catch (\Exception $e)
+        {
+            return response()->json(["status" => false, "message" => $e->getMessage(), "data" => []], 500);
+        }
     }
     public function search($name)
     {
@@ -117,35 +168,12 @@ class PostController extends Controller
             $post->update([
                 'status' => SELF::STATUS_APPROVED
             ]);
-        } else if ($status == "2"){
+        } else if ($status == "2") {
             $post->update([
                 'status' => SELF::STATUS_DELETED
             ]);
         };
 
         return response()->json($post);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Api\Post $post
-     * @return \Illuminate\Http\Response
-     */
-//    public function delete(Request $request, $id)
-//    {
-//        $post = Post::findOrFail($id);
-//        $post->update([
-//            'status' => self::STATUS_DELETED
-//        ]);
-//        return response()->json($post);
-//    }
-
-    public function getCountDay(Request $request)
-    {
-        $count = Post::where('status', '=', self::STATUS_APPROVED)
-                        ->where('date("created_at")', '=', $request->get('date'))
-                        ->count();
-        return response()->json($count);
     }
 }

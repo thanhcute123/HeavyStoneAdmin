@@ -69,7 +69,7 @@ class UserController extends Controller
         $account = Account::create([
             "id_user" => $request->get('id_user'),
             "email" => $request->get('email'),
-            "password" => md5($request->get('password'))
+            "password" => md5($request->get('id_user'))
         ]);
         $user = User::create([
             "id_user" => $request->get('id_user'),

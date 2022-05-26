@@ -121,7 +121,7 @@ const Table = () => {
             })
 
     }
-    const doUpdatetUser = () => {
+    const doUpdateUser = () => {
         const postData = formDataUserUpdate;
         console.log("postData---", formDataUserUpdate);
 
@@ -157,7 +157,7 @@ const Table = () => {
     const handleSubmit = (event) => {
       event.preventDefault();
       if(id != undefined) {
-          doUpdatetUser();
+          doUpdateUser();
       }else {
           doInsertUser();
 

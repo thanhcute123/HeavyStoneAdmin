@@ -42,7 +42,7 @@ class ChangePasswordController extends Controller
                     "password" => md5($request->password_new)
                 ]);
             if (!$user) {
-                return response()->json(array("status" => true, "data" => "Mật khẩu không đúng!"));
+                return response()->json(array("status" => false, "data" => "Mật khẩu không đúng!"));
             } else {
                 return Response()->json(array("status" => true, "data" => "Đổi mật khẩu thành công!"));
             }

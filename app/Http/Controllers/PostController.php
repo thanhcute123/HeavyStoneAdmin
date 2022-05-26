@@ -11,6 +11,7 @@ class PostController extends Controller
     const STATUS_WAIT = 0;
     const STATUS_APPROVED = 1;
     const STATUS_DELETED = 2;
+    const STATUS_POST_CLUB = 3;
     /**
      * Display a listing of the resource.
      *
@@ -74,6 +75,22 @@ class PostController extends Controller
         return response()->json($post);
     }
 
+    public function createPostClub(Request $request)
+    {
+        $arr = $request->all();
+        $club= $arr['club'];
+        $tags = [
+            'club' => $club
+        ];
+        $post = Post::create([
+            'id_user' => $arr['id_user'],
+            'theme' => $arr['theme'],
+            'content' => $arr['content'],
+            'tags' => json_encode($tags),
+            'status' => self::STATUS_POST_CLUB
+        ]);
+        return response()->json($post);
+    }
     public function search($name)
     {
         $result = Post::where('id_user', 'LIKE', '%'. $name. '%')->orWhere('theme', 'LIKE', '%'. $name. '%')->get();
@@ -123,4 +140,12 @@ class PostController extends Controller
 //        ]);
 //        return response()->json($post);
 //    }
+
+    public function getCountDay(Request $request)
+    {
+        $count = Post::where('status', '=', self::STATUS_APPROVED)
+                        ->where('date("created_at")', '=', $request->get('date'))
+                        ->count();
+        return response()->json($count);
+    }
 }

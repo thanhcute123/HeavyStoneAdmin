@@ -44,7 +44,6 @@ Route::post('/post/getCountDay', [PostController::class, 'getCountDay'])->name('
 Route::get('/post/{id}', [PostController::class, 'getId'])->name('getId');
 Route::post('/post/create', [PostController::class, 'create'])->name('create');
 Route::post('/post/createPostClub', [PostController::class, 'createPostClub'])->name('createPostClub');
-
 Route::put('/post/update/{id}', [PostController::class, 'update'])->name('update');
 Route::delete('/post/delete/{id}', [PostController::class, 'delete'])->name('delete');
 Route::get('/post/search/{name}', [PostController::class, 'search'])->name('search');
@@ -104,3 +103,6 @@ Route::post('/admin/upLoadAvatar/{id}', [UserController::class, 'upLoadAvatar'])
 Route::get('/message/getId/{id}', [MessageController::class, 'getId'])->name('getId');
 Route::post('/message/create', [MessageController::class, 'create'])->name('create');
 Route::put('/message/update', [MessageController::class, 'update'])->name('update');
+
+//Lấy số lượng bài post theo từng người
+Route::get('/post/getUser', [PostController::class, 'getUser'])->name('getUser');

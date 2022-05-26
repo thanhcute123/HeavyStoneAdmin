@@ -1,0 +1,36 @@
+.card-table {
+    width: 97%;
+    margin-left: 15px;
+}
+
+.table-add {
+    padding: 5px;
+    border-radius: 50px;
+    float: left;
+    margin-bottom: 15px;
+}
+
+.button-add {
+    border: none;
+    color: white;
+    background-color: #1c606a;
+    border-radius: 5px;
+}
+
+.table-search {
+    border: 1px solid lightgrey;
+    padding: 5px;
+    border-radius: 50px;
+    float: right;
+    margin-bottom: 15px;
+}
+
+.table-search input {
+    border: none;
+    text-indent: 10px;
+}
+
+.table-search input:focus {
+    outline: none;
+}
+

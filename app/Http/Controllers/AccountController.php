@@ -14,7 +14,8 @@ class AccountController extends Controller
      */
     public function getAll()
     {
-        $account = Account::simplePaginate(10);
+//        $account = Account::simplePaginate(10);
+        $account = Account::get();
         return response()->json($account);
     }
 

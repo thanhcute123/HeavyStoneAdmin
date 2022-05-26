@@ -13,7 +13,7 @@ import {NameFaculty} from "../../../Store/ContextNameFaculty";
 
 const Post = ({nameFaclty}) => {
     const context = useContext(NameFaculty)
-    // console.log("tesstName-----", context.nameFaculty)
+    console.log("tesstName-----", context.nameFaculty)
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -33,7 +33,7 @@ const Post = ({nameFaclty}) => {
             .then(res => res.data)
             .then(
                 (result) => {
-                    console.log("dataPost----", result);
+                    console.log("dataPostduyet----", result);
                     // this.dataPost = result.data
                     setIsLoaded(true);
                     let rows = [];
@@ -243,8 +243,9 @@ const Post = ({nameFaclty}) => {
                 </form>
 
                 {dataPost.map((post, idx) =>(
+                    // console.log("post---", post)
 
-                    post.faculty === context.nameFaculty &&
+                    post.faculty == context.nameFaculty &&
 
                     <div key={idx} className="post d-flex align-items-center">
                         <div className="col-lg-9 ">

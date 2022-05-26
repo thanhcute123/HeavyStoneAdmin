@@ -12,6 +12,7 @@ class Post extends Model
         'id_user',
         'theme',
         'content',
+        'image',
         'tags',
         'status'
     ];

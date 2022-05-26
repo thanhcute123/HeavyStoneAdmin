@@ -89,4 +89,13 @@ class AccountController extends Controller
         $account = Account::destroy($id);
         return response()->json("Đã xóa thành công");
     }
+
+    public function resetPassword(Request $request, $id)
+    {
+        $account = Account::findOrFail($id);
+        $account->update([
+            "password" => md5($account->id_user)
+        ]);
+        return response()->json($account);
+    }
 }

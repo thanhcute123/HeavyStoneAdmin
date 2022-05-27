@@ -34,7 +34,7 @@ Route::get('/user/{id}', [UserController::class, 'getId'])->name('getId');
 Route::post('/user/create', [UserController::class, 'create'])->name('create');
 Route::put('/user/update/{id}', [UserController::class, 'update'])->name('update');
 Route::delete('/user/delete/{id}', [UserController::class, 'delete'])->name('delete');
-Route::get('/user/search/{name}', [UserController::class, 'search'])->name('search');
+Route::post('/user/search', [UserController::class, 'search'])->name('search');
 
 //Api thao tác với bài đăng
 Route::get('/post/getAll', [PostController::class, 'getAll'])->name('getAll');

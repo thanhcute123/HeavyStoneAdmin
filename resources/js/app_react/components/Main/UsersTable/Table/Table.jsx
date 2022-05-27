@@ -28,6 +28,10 @@ const Table = () => {
         id_department:"",
         email:""
     });
+
+    const [searchUser, setSearchUser] = useState({
+        search: '',
+    })
     const [formDataUserUpdate, setFormDataUserUpdate] = useState()
 
 
@@ -48,6 +52,12 @@ const Table = () => {
         setFormDataUserUpdate({...formDataUserUpdate});
         console.log("bbbb---", formDataUserUpdate);
     }
+    const  updateFieldSearch = (e, key) => {
+        searchUser[key] = e.target.value;
+        setSearchUser({...searchUser});
+        console.log(searchUser);
+    }
+
 
     const getDataUserApi = () => {
         setIsLoaded(true);
@@ -140,6 +150,22 @@ const Table = () => {
 
 
     }
+
+    const doSearchUser = () => {
+        const postData = searchUser;
+        console.log("postData---", searchUser);
+
+        axios.post(`http://127.0.0.1:8000/api/user/search`,{
+            search: searchUser.search,
+
+        })
+            .then(res => {
+
+                getDataUserApi()
+            })
+
+
+    }
     const doDeleteUser = (id) => {
 
         axios.delete(`http://127.0.0.1:8000/api/user/delete/${id}`,{
@@ -153,6 +179,11 @@ const Table = () => {
 
 
     }
+
+    // const handleSearch = (e) => {
+    //   e.preventDefault();
+    //   doSearchUser();
+    // }
 
     const handleSubmit = (event) => {
       event.preventDefault();
@@ -420,8 +451,13 @@ const Table = () => {
                             }}>+ Add</button>
                         </div>
                         <div className="table-search">
-                            <input placeholder="Search" size="40" type="text" />
-                            <FontAwesomeIcon className="mr-2" icon={faSearch} />
+                            <input value={searchUser.search} placeholder="Search" size="40" type="text"  onChange={(e) => {
+                                updateFieldSearch(e, 'search')
+                            }}/>
+                            <button type="submit" onClick={(e) => {
+                                doSearchUser(e)
+                            }}><FontAwesomeIcon className="mr-2" icon={faSearch} /></button>
+
                         </div>
                         <div className="table-responsive">
 

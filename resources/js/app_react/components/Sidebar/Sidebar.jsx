@@ -1,7 +1,7 @@
 import React from "react";
 import { Icon } from '@iconify/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLaughWink, faTachometerAlt, faUsers, faPager, faHeart, faFireAlt } from '@fortawesome/free-solid-svg-icons';
+import { faLaughWink, faTachometerAlt, faUsers, faPager, faHeart, faFireAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from "react-router-dom";
 import "../../css/sb-admin-2.css";
 import logo from "../../img/Logo.png";
@@ -22,6 +22,12 @@ const Sidebar = () => {
                         <NavLink to="" className="nav-link">
                            <FontAwesomeIcon icon={faTachometerAlt}/>
                             <span className="item">Dashboard</span>
+                        </NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink to="accounts" className="nav-link">
+                            <FontAwesomeIcon icon={faUser}/>
+                            <span className="item">Account</span>
                         </NavLink>
                     </li>
                     <li className="nav-item">

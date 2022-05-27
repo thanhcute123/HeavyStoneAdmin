@@ -18,7 +18,7 @@ class UserController extends Controller
     public function getAll()
     {
 //        $user = User::simplePaginate(5);
-        $user = User::whereNull('status')->get();
+        $user = User::whereNull('status')->orderBy('id', 'desc')->get();
         return response()->json($user);
     }
     public function upLoadAvatar(Request $request, $id)
@@ -101,9 +101,10 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function search($name)
+    public function search(Request $request)
     {
-        $result = Task::where('id_user', 'LIKE', '%'. $name. '%')->orWhere('username', 'LIKE', '%'. $name. '%')->get();
+        $name = $request->get('search');
+        $result = User::where('id_user', 'LIKE', '%'. $name. '%')->orWhere('username', 'LIKE', '%'. $name. '%')->get();
         if(count($result)){
             return Response()->json($result);
         }

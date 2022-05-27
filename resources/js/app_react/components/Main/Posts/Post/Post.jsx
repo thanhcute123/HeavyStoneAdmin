@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
 import axios from "axios";
 import avatar from "../../../../img/undraw_profile.svg";
+// import image from "../../../../../../../public/images/1653580640.png";
 
 import {Modal} from "react-bootstrap";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
@@ -12,8 +13,9 @@ import Title from "../Title/Title";
 import {NameFaculty} from "../../../Store/ContextNameFaculty";
 
 const Post = ({nameFaclty}) => {
+
     const context = useContext(NameFaculty)
-    // console.log("tesstName-----", context.nameFaculty)
+    console.log("tesstName-----", context.nameFaculty)
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -33,7 +35,7 @@ const Post = ({nameFaclty}) => {
             .then(res => res.data)
             .then(
                 (result) => {
-                    console.log("dataPost----", result);
+                    console.log("dataPostduyet----", result);
                     // this.dataPost = result.data
                     setIsLoaded(true);
                     let rows = [];
@@ -51,6 +53,7 @@ const Post = ({nameFaclty}) => {
                             id_user: result[i].id_user,
                             theme: result[i].theme,
                             content: result[i].content,
+                            image: result[i].image,
                             faculty: tags.faculty,
                             major: tags.major,
                             created_at: time
@@ -135,9 +138,16 @@ const Post = ({nameFaclty}) => {
 
     }
 
+
+
     useEffect(() => {
-        getDataPost();
-        getDataUser();
+        // const timer = window.setInterval(() => {
+            getDataPost();
+            getDataUser();
+        // }, 10000);
+        // return () => { // Return callback to run on unmount.
+        //     window.clearInterval(timer);
+        // };
 
     }, [])
     return (
@@ -174,37 +184,32 @@ const Post = ({nameFaclty}) => {
                                         </div>
                                         <div className="form-group">
                                             <label>Content</label>
-                                            {/*<input type="text" className="form-control title" onChange={(e) => {*/}
-
+                                            {/*<input value={formDataPostUpdate.content} type="text" className="form-control title" onChange={(e) => {*/}
+                                            {/*    updateField(e,'context')*/}
                                             {/*}}/>*/}
-                                            <CKEditor disabled data={ formDataPostUpdate.content }
+
+
+                                            <CKEditor  disabled data={ formDataPostUpdate.content }
                                                       onChange={(event, editor) => {
                                                           const data = editor.getData();
                                                           updateFieldContent(data,'content');
                                                       }}
-                                                      className="mt-3 wrap-ckeditor" editor={ClassicEditor} />
-                                            {/*<CKEditor id="102" value="something" editor={ClassicEditor} onInput={(e) => {e.target.value}} />*/}
+                                                      className="mt-3 wrap-ckeditor" editor={ClassicEditor}/>
+
+
                                         </div>
 
                                         <div className="form-group">
                                             <label>Status</label>
                                             <div className="d-flex">
-                                                <div className="form-check m-3">
-                                                    <input className="form-check-input" type="radio" name="flexRadioDefault"
-                                                           id="flexRadioDefault1" checked value={0} onChange={(e) => {
-                                                        updateField(e,'status');
-                                                    }}/>
-                                                    <label className="form-check-label" htmlFor="flexRadioDefault1">
-                                                        Chờ duyệt
-                                                    </label>
-                                                </div>
+
                                                 <div className="form-check m-3">
                                                     <input className="form-check-input" type="radio" name="flexRadioDefault"
                                                            id="flexRadioDefault2" value={1} onChange={(e) => {
                                                         updateField(e,'status');
                                                     }}/>
                                                     <label className="form-check-label" htmlFor="flexRadioDefault2">
-                                                        duyệt
+                                                        Duyệt
                                                     </label>
                                                 </div>
                                                 <div className="form-check m-3">
@@ -242,7 +247,9 @@ const Post = ({nameFaclty}) => {
                     </Modal>
                 </form>
 
+
                 {dataPost.map((post, idx) =>(
+                    // console.log("postaaaa---", post)
 
                     post.faculty === context.nameFaculty &&
 
@@ -271,6 +278,8 @@ const Post = ({nameFaclty}) => {
                             <div className="ml-2">
                                 <div className="description mt-2">
                                     {post.theme}
+
+
                                 </div>
                             </div>
                         </div>

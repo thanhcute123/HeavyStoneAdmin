@@ -11,6 +11,7 @@ import Club from "./Main/Club/Club";
 import UrgentNotice from "./Main/UrgentNotice/UrgentNotice";
 import Post from "./Main/Posts/Post/Post";
 import Faculty from "./Main/Posts/Faculty/Faculty";
+import AccountsTable from "./Main/AccountsTable/AccountsTable";
 
 
 
@@ -23,6 +24,7 @@ function App( props ){
                 <Route path="/signin" element={<Signin/>}/> :
                 <Route path="/" element={<Homepage/>}>
                         <Route path="" element={<Content/>}/>
+                        <Route path="accounts" element={<AccountsTable/>}/>
                         <Route path="users" element={<UsersTable/>}/>
                         <Route path="faculty" element={<Faculty/>}/>
                         <Route path="posts" element={<Post/>}/>

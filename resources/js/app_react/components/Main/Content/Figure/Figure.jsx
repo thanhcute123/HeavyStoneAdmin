@@ -72,30 +72,30 @@ const Figure = () => {
                 }
             )
     }
-    const getDataCountDocumentApi = () => {
-        setIsLoaded(true);
-        axios.get("http://127.0.0.1:8000/api/document/getCount")
-            .then(res => res.data)
-            .then(
-                (result) => {
-                    console.log("dataCountPostRequest----", result);
-                    setIsLoaded(true);
-                    setCountDocument(result);
-
-                    // console.log("items---", items);
-                },
-
-                (error) => {
-                    setIsLoaded(true);
-                    setError(error);
-                }
-            )
-    }
+    // const getDataCountDocumentApi = () => {
+    //     setIsLoaded(true);
+    //     axios.get("http://127.0.0.1:8000/api/document/getCount")
+    //         .then(res => res.data)
+    //         .then(
+    //             (result) => {
+    //                 console.log("dataCountPostRequest----", result);
+    //                 setIsLoaded(true);
+    //                 setCountDocument(result);
+    //
+    //                 // console.log("items---", items);
+    //             },
+    //
+    //             (error) => {
+    //                 setIsLoaded(true);
+    //                 setError(error);
+    //             }
+    //         )
+    // }
     useEffect(() => {
         getDataCountUserApi();
         getDataCountPostsApi();
         getDataCountPostsRequestApi();
-        getDataCountDocumentApi()
+        // getDataCountDocumentApi()
 
     }, [])
 
@@ -154,7 +154,7 @@ const Figure = () => {
                                         </div>
                                         {/*<div className="row no-gutters align-items-center">*/}
                                         {/*    <div className="">*/}
-                                        <div className="h5 mb-0 mr-3 font-weight-bold text-gray-800">{countDocuments}</div>
+                                        <div className="h5 mb-0 mr-3 font-weight-bold text-gray-800">4</div>
                                         {/*</div>*/}
                                         {/*</div>*/}
                                     </div>

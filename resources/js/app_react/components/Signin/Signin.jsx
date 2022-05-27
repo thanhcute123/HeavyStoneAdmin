@@ -91,8 +91,14 @@ const Signin = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         adminSignin()
-        navigate('/');
-        window.location.reload();
+
+        if(status === 1 ) {
+
+        }else {
+            navigate('/');
+            window.location.reload();
+        }
+
 
 
 
@@ -137,6 +143,7 @@ const Signin = () => {
 
                             <button type="submit" className="signin-button rounded-3" onClick={(e) => {
                                 handleSubmit(e);
+                                {errors && setSt()}
                             }}>Zô</button>
 
                         </form>

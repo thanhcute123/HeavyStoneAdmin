@@ -38,7 +38,7 @@ class MessageController extends Controller
             'id_user' => $request->get('id_user'),
             'username' => $request->get('username'),
             'email' => $request->get('email'),
-            'message' => $request->get('mesage'),
+            'message' => $request->get('message'),
             'status' => "1"
         ]);
         return response()->json($message);
